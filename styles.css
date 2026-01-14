@@ -1,0 +1,296 @@
+:root {
+  color-scheme: light;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  background: #f4f6fb;
+  color: #1b1f2a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 32px 40px 80px;
+  background: #f4f6fb;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6f7a91;
+}
+
+h1 {
+  margin: 6px 0 8px;
+  font-size: 32px;
+}
+
+.subtitle {
+  margin: 0;
+  color: #5a6478;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 16px 40px rgba(17, 26, 56, 0.08);
+}
+
+.upload-card,
+.result-card {
+  grid-column: span 2;
+}
+
+.muted {
+  color: #6f7a91;
+  margin: 6px 0 16px;
+}
+
+.upload-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f0f3fa;
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+}
+
+.upload-title {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: #6f7a91;
+}
+
+.upload-path {
+  margin: 0;
+  font-weight: 600;
+}
+
+.file-list {
+  display: grid;
+  gap: 12px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f7f9fc;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.file-name {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.file-meta {
+  margin: 0;
+  color: #8a95aa;
+  font-size: 12px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: #3a4253;
+}
+
+select {
+  border-radius: 12px;
+  border: 1px solid #d3d9e6;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.toggle-row {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0 6px;
+  border-top: 1px solid #eef1f6;
+}
+
+.toggle-title {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.primary-button,
+.secondary-button,
+.ghost-button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: #3659f3;
+  color: #fff;
+}
+
+.secondary-button {
+  background: #e9edff;
+  color: #2f44a7;
+}
+
+.ghost-button {
+  background: transparent;
+  color: #3659f3;
+  border: 1px solid #d3d9e6;
+}
+
+.primary-button.full {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.result-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.summary-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.summary-card {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.summary-card.warning {
+  background: #fff3e2;
+}
+
+.summary-title {
+  margin: 0 0 6px;
+  color: #6f7a91;
+  font-size: 12px;
+}
+
+.summary-value {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead {
+  text-align: left;
+  background: #f3f5fb;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #edf0f6;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e4e9f7;
+  color: #3a4253;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.chip.success {
+  background: #e1f7e8;
+  color: #237447;
+}
+
+.chip.warning {
+  background: #fff0dc;
+  color: #b86a1a;
+}
+
+.chip.danger {
+  background: #ffe6e6;
+  color: #9a2c2c;
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.timeline-title {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.timeline-meta {
+  margin: 0;
+  color: #6f7a91;
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  body {
+    padding: 24px;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .upload-card,
+  .result-card {
+    grid-column: span 1;
+  }
+}

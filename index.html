@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>出勤簿チェック - モックアップ</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Attendance Check App</p>
+        <h1>出勤簿チェック</h1>
+        <p class="subtitle">Excelの出勤簿から未入力者を素早く抽出します。</p>
+      </div>
+      <button class="ghost-button" type="button">通知テンプレを開く</button>
+    </header>
+
+    <main class="layout">
+      <section class="card upload-card">
+        <h2>出勤簿ファイルを指定</h2>
+        <p class="muted">指定フォルダ内のExcel（.xlsx）を読み込み、列設定を行います。</p>
+        <div class="upload-box">
+          <div>
+            <p class="upload-title">対象フォルダ</p>
+            <p class="upload-path">/attendance/2024/04/</p>
+          </div>
+          <button class="primary-button" type="button">フォルダを選択</button>
+        </div>
+        <div class="file-list">
+          <div class="file-item">
+            <div>
+              <p class="file-name">2024_04_attendance.xlsx</p>
+              <p class="file-meta">最終更新: 2024/04/22 09:30</p>
+            </div>
+            <span class="chip success">読み込み済み</span>
+          </div>
+          <div class="file-item">
+            <div>
+              <p class="file-name">2024_04_parttime.xlsx</p>
+              <p class="file-meta">最終更新: 2024/04/21 18:12</p>
+            </div>
+            <span class="chip">待機中</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card settings-card">
+        <h2>列マッピング</h2>
+        <p class="muted">Excelに記載されている列を選択してください。</p>
+        <div class="form-grid">
+          <label>
+            社員名列
+            <select>
+              <option>A列: 氏名</option>
+              <option>B列: 社員ID</option>
+              <option>C列: 部署</option>
+            </select>
+          </label>
+          <label>
+            日付列
+            <select>
+              <option>D列: 日付</option>
+              <option>E列: 日付</option>
+            </select>
+          </label>
+          <label>
+            始業時刻列
+            <select>
+              <option>F列: 始業時刻</option>
+              <option>G列: 始業時刻</option>
+            </select>
+          </label>
+          <label>
+            終業時刻列
+            <select>
+              <option>H列: 終業時刻</option>
+              <option>I列: 終業時刻</option>
+            </select>
+          </label>
+        </div>
+        <div class="toggle-row">
+          <div>
+            <p class="toggle-title">対象期間</p>
+            <p class="muted">4月1日〜4月22日</p>
+          </div>
+          <button class="secondary-button" type="button">期間を変更</button>
+        </div>
+        <button class="primary-button full" type="button">未入力者を抽出</button>
+      </section>
+
+      <section class="card result-card">
+        <div class="result-header">
+          <div>
+            <h2>未入力者リスト</h2>
+            <p class="muted">日付・始業・終業のいずれかが未入力の社員</p>
+          </div>
+          <div class="result-actions">
+            <button class="secondary-button" type="button">CSVで出力</button>
+            <button class="ghost-button" type="button">Slack通知</button>
+          </div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-card">
+            <p class="summary-title">対象社員</p>
+            <p class="summary-value">128名</p>
+          </div>
+          <div class="summary-card warning">
+            <p class="summary-title">未入力</p>
+            <p class="summary-value">12名</p>
+          </div>
+          <div class="summary-card">
+            <p class="summary-title">確認済み</p>
+            <p class="summary-value">116名</p>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>社員名</th>
+              <th>部署</th>
+              <th>未入力項目</th>
+              <th>対象日</th>
+              <th>状態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>田中 彩</td>
+              <td>営業</td>
+              <td>始業時刻</td>
+              <td>2024/04/22</td>
+              <td><span class="chip warning">確認待ち</span></td>
+            </tr>
+            <tr>
+              <td>佐藤 海斗</td>
+              <td>開発</td>
+              <td>終業時刻</td>
+              <td>2024/04/21</td>
+              <td><span class="chip warning">確認待ち</span></td>
+            </tr>
+            <tr>
+              <td>小林 里奈</td>
+              <td>人事</td>
+              <td>日付 / 始業時刻</td>
+              <td>2024/04/20</td>
+              <td><span class="chip danger">未連絡</span></td>
+            </tr>
+            <tr>
+              <td>山本 大輝</td>
+              <td>サポート</td>
+              <td>終業時刻</td>
+              <td>2024/04/20</td>
+              <td><span class="chip warning">確認待ち</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card activity-card">
+        <h2>通知履歴</h2>
+        <ul class="timeline">
+          <li>
+            <p class="timeline-title">Slack通知を送信</p>
+            <p class="timeline-meta">2024/04/22 10:05 - 12名へ送信</p>
+          </li>
+          <li>
+            <p class="timeline-title">CSV出力を保存</p>
+            <p class="timeline-meta">2024/04/22 10:00 - attendance_missing.csv</p>
+          </li>
+          <li>
+            <p class="timeline-title">出勤簿を読み込み</p>
+            <p class="timeline-meta">2024/04/22 09:45 - 2ファイル</p>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
