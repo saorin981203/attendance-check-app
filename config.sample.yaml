@@ -1,0 +1,14 @@
+attendance_root: "\\\\fileserver\\attendance"
+target_year_month: "2024-04"
+paidleave_excel_path: "\\\\fileserver\\paidleave\\paidleave.xlsx"
+paidleave_sheet_name: "申請一覧"
+paidleave_col_name:
+  name: "氏名"
+  date: "日付"
+  type: "区分"
+paidleave_type_mapping:
+  有給（全日）: "leave"
+  出勤: "work"
+employee_master_path: "\\\\fileserver\\master\\employees.xlsx"
+name_normalize_replacements: "name_dictionary.csv"
+output_dir: "results"
