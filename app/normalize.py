@@ -7,8 +7,7 @@ import unicodedata
 from pathlib import Path
 
 
-PUNCTUATION_PATTERN = re.compile(r"[\s・･•．.\-ー—―()（）\[\]【】]++")
-
+PUNCTUATION_PATTERN = re.compile(r"...+")
 
 def normalize_name(value: str) -> str:
     normalized = unicodedata.normalize("NFKC", value)
