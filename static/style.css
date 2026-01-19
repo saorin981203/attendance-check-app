@@ -1,0 +1,169 @@
+:root {
+  color-scheme: light;
+  font-family: "Noto Sans JP", "Yu Gothic", sans-serif;
+  background: #f5f6fb;
+  color: #1b1f2a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 32px;
+  background: #f5f6fb;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a879f;
+}
+
+h1 {
+  margin: 8px 0;
+  font-size: 30px;
+}
+
+.subtitle {
+  margin: 0;
+  color: #667289;
+}
+
+.layout {
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(20, 24, 40, 0.08);
+}
+
+.form-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  color: #3c4354;
+}
+
+input,
+select {
+  border-radius: 10px;
+  border: 1px solid #d7dce7;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.form-actions {
+  grid-column: 1 / -1;
+}
+
+.primary-button,
+.secondary-button,
+.ghost-button {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.primary-button {
+  background: #3659f3;
+  color: #fff;
+}
+
+.secondary-button {
+  background: #e7ebff;
+  color: #2f44a7;
+}
+
+.ghost-button {
+  background: transparent;
+  color: #3659f3;
+  border: 1px solid #d7dce7;
+}
+
+.filters {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-bottom: 16px;
+}
+
+.muted {
+  color: #6f7a91;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead {
+  background: #f3f5fb;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #edf0f6;
+  vertical-align: top;
+}
+
+.actions {
+  display: grid;
+  gap: 6px;
+}
+
+.path {
+  font-size: 11px;
+  color: #8a95aa;
+  word-break: break-all;
+}
+
+.chip {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e8ecf9;
+  color: #39425b;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 20px;
+  }
+
+  .app-header {
+    flex-direction: column;
+  }
+}

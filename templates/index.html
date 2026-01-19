@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>出勤簿チェック</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Attendance Check Tool</p>
+        <h1>出勤簿チェック</h1>
+        <p class="subtitle">社内ファイルサーバーのExcelから未入力と有給不一致を検出します。</p>
+      </div>
+      <a class="ghost-button" href="{{ url_for('refresh') }}">入力をリセット</a>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>条件入力</h2>
+        <form class="form-grid" method="post" action="{{ url_for('run') }}">
+          <label>
+            対象年月 (YYYY-MM)
+            <input name="target_year_month" value="{{ config.target_year_month }}" />
+          </label>
+          <label>
+            出勤簿ルートフォルダ
+            <input name="attendance_root" value="{{ config.attendance_root }}" />
+          </label>
+          <label>
+            有給申請Excelパス
+            <input name="paidleave_excel_path" value="{{ config.paidleave_excel_path }}" />
+          </label>
+          <label>
+            有給申請シート名
+            <input name="paidleave_sheet_name" value="{{ config.paidleave_sheet_name }}" />
+          </label>
+          <label>
+            有給申請列: 氏名
+            <input name="paidleave_col_name_name" value="{{ config.paidleave_col_name.name }}" />
+          </label>
+          <label>
+            有給申請列: 日付
+            <input name="paidleave_col_name_date" value="{{ config.paidleave_col_name.date }}" />
+          </label>
+          <label>
+            有給申請列: 区分
+            <input name="paidleave_col_name_type" value="{{ config.paidleave_col_name.type }}" />
+          </label>
+          <label>
+            社員マスタ (氏名→メール)
+            <input name="employee_master_path" value="{{ config.employee_master_path }}" />
+          </label>
+          <label>
+            氏名ゆれ辞書パス
+            <input name="name_normalize_replacements" value="{{ config.name_normalize_replacements }}" />
+          </label>
+          <label>
+            出力フォルダ
+            <input name="output_dir" value="{{ config.output_dir }}" />
+          </label>
+          <div class="form-actions">
+            <button class="primary-button" type="submit">チェック開始</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>結果一覧</h2>
+        <div class="filters">
+          <input placeholder="部署で絞り込み" />
+          <input placeholder="氏名で絞り込み" />
+          <select>
+            <option>エラー種別</option>
+            <option>MISSING_TIME</option>
+            <option>PAIDLEAVE_MISMATCH</option>
+          </select>
+        </div>
+        {% if results %}
+        <p class="muted">出力先: {{ output_dir }}</p>
+        <table>
+          <thead>
+            <tr>
+              <th>部署</th>
+              <th>氏名</th>
+              <th>日付</th>
+              <th>エラー種別</th>
+              <th>出勤簿入力</th>
+              <th>有給申請</th>
+              <th>アクション</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in results %}
+            <tr>
+              <td>{{ row.department }}</td>
+              <td>{{ row.name }}</td>
+              <td>{{ row.date }}</td>
+              <td><span class="chip">{{ row.error_type }}</span></td>
+              <td>{{ row.attendance_detail }}</td>
+              <td>{{ row.paidleave_detail }}</td>
+              <td class="actions">
+                <a class="secondary-button" href="{{ row.mailto }}">メール作成</a>
+                <span class="path">{{ row.file_path }}</span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="muted">まだ実行されていません。条件を入力して「チェック開始」を押してください。</p>
+        {% endif %}
+      </section>
+    </main>
+  </body>
+</html>
